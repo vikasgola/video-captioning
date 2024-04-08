@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Captioning</title>
+</head>
+<body>
+    <h1>Video Captioning</h1>
+    <form id="captionForm">
+        <label for="videoUrl">Video URL:</label>
+        <input type="text" id="videoUrl" name="videoUrl" required><br><br>
+
+        <label for="startTimestamp">Start Timestamp:</label>
+        <input type="text" id="startTimestamp" name="startTimestamp" required><br><br>
+
+        <label for="endTimestamp">End Timestamp:</label>
+        <input type="text" id="endTimestamp" name="endTimestamp" required><br><br>
+
+        <label for="caption">Caption:</label>
+        <textarea id="caption" name="caption" rows="4" required></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <video id="videoPlayer" controls>
+        Your browser does not support the video tag.
+    </video>
+
+    <script src="index.js"></script>
+</body>
+</html>
