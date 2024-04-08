@@ -9,15 +9,21 @@ function addNewCaptionForm(){
     captionCount++;
 
     const captionInput = document.createElement("div");
+    captionInput.classList.add("mb-3");
     captionInput.innerHTML = `
-        <label for="startTimestamp${captionCount}">Start Timestamp:</label>
-        <input type="text" id="startTimestamp${captionCount}" name="startTimestamp${captionCount}" required>
-        <label for="endTimestamp${captionCount}">End Timestamp:</label>
-        <input type="text" id="endTimestamp${captionCount}" name="endTimestamp${captionCount}" required>
-        <label for="caption${captionCount}">Caption:</label>
-        <textarea id="caption${captionCount}" name="caption${captionCount}" rows="4" required></textarea>
+        <div class="row">
+            <div class="col">
+                <label for="startTimestamp${captionCount}" class="form-label">Start Timestamp:</label>
+                <input type="text" class="form-control" id="startTimestamp${captionCount}" name="startTimestamp${captionCount}" required>
+            </div>
+            <div class="col">
+                <label for="endTimestamp${captionCount}" class="form-label">End Timestamp:</label>
+                <input type="text" class="form-control" id="endTimestamp${captionCount}" name="endTimestamp${captionCount}" required>
+            </div>
+        </div>
+        <label for="caption${captionCount}" class="form-label">Caption:</label>
+        <textarea class="form-control" id="caption${captionCount}" name="caption${captionCount}" rows="4" required></textarea>
     `;
-
     captionsContainer.appendChild(captionInput);
 }
 
