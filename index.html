@@ -19,21 +19,8 @@
                 <input type="text" class="form-control" id="videoUrl" name="videoUrl" required>
             </div>
 
-            <div id="captionsContainer">
-                <div>
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="startTimestamp1" class="form-label">Start Timestamp:</label>
-                            <input type="text" class="form-control" id="startTimestamp1" name="startTimestamp1" required>
-                        </div>
-                        <div class="col">
-                            <label for="endTimestamp1" class="form-label">End Timestamp:</label>
-                            <input type="text" class="form-control" id="endTimestamp1" name="endTimestamp1" required>
-                        </div>
-                    </div>
-                    <label for="caption1" class="form-label">Caption:</label>
-                    <textarea class="form-control" id="caption1" name="caption1" rows="3" required></textarea>
-                </div>
+            <div id="captionsAccordion" class="accordion">
+                <!-- Captions will be dynamically added here -->
             </div>
 
             <button type="button" class="btn btn-primary mt-3" id="addCaptionButton">Add Caption</button>

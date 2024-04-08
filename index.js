@@ -1,4 +1,4 @@
-var captionCount = 1;
+var captionCount = 0;
 
 const captionForm = document.getElementById("captionForm");
 const addCaptionButton = document.getElementById("addCaptionButton");
@@ -8,10 +8,19 @@ const captionsContainer = document.getElementById("captionsContainer");
 function addNewCaptionForm(){
     captionCount++;
 
+    const captionsAccordion = document.getElementById("captionsAccordion");
     const captionInput = document.createElement("div");
-    captionInput.classList.add("mb-3");
+    captionInput.classList.add("accordion-item");
+
     captionInput.innerHTML = `
-        <div class="row">
+        <h2 class="accordion-header" id="captionHeading${captionCount}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#captionCollapse${captionCount}" aria-expanded="false" aria-controls="captionCollapse${captionCount}">
+                Caption ${captionCount}
+            </button>
+        </h2>
+        <div id="captionCollapse${captionCount}" class="accordion-collapse collapse" aria-labelledby="captionHeading${captionCount}" data-bs-parent="#captionsAccordion">
+            <div class="accordion-body">
+                <div class="row mb-3">
             <div class="col">
                 <label for="startTimestamp${captionCount}" class="form-label">Start Timestamp:</label>
                 <input type="text" class="form-control" id="startTimestamp${captionCount}" name="startTimestamp${captionCount}" required>
@@ -23,8 +32,11 @@ function addNewCaptionForm(){
         </div>
         <label for="caption${captionCount}" class="form-label">Caption:</label>
         <textarea class="form-control" id="caption${captionCount}" name="caption${captionCount}" rows="4" required></textarea>
+            </div>
+        </div>
     `;
-    captionsContainer.appendChild(captionInput);
+
+    captionsAccordion.appendChild(captionInput);
 }
 
 // load video with caption
