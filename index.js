@@ -86,8 +86,18 @@ function loadVideoWithCaption(){
     const video = document.getElementById("videoPlayer");
     video.src = videoUrl;
 
+    const track = video.textTracks[0];
+    if(!track && captionCount > 0){
+        // add text track if there is no text track and at least 1 caption is provided
+        video.addTextTrack("captions");
+    }
+
+    // remove previous cues
+    for(var t of track.cues){
+        track.removeCue(t)
+    }
+
     // Add caption to video player
-    const track = video.textTracks[0] || video.addTextTrack("captions");
     for (let i = 1; i <= captionCount; i++) {
         // get submitted timestamp and caption values in the form
         const startHour = document.getElementById(`startHour${i}`).value;
