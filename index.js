@@ -84,17 +84,18 @@ function loadVideoWithCaption(){
     // set video url to video element
     const videoUrl = document.getElementById("videoUrl").value;
     const video = document.getElementById("videoPlayer");
-    video.src = videoUrl;
 
-    const track = video.textTracks[0];
-    if(!track && captionCount > 0){
-        // add text track if there is no text track and at least 1 caption is provided
-        video.addTextTrack("captions");
-    }
-
-    // remove previous cues
-    for(var t of track.cues){
-        track.removeCue(t)
+    var track = video.textTracks[0];
+    if(!track){
+        if(captionCount > 0){
+            // add text track if there is no text track and at least 1 caption is provided
+            track = video.addTextTrack("captions");
+        }
+    }else{
+        // remove previous cues
+        for(var t of track.cues){
+            track.removeCue(t)
+        }
     }
 
     // Add caption to video player
@@ -118,10 +119,17 @@ function loadVideoWithCaption(){
         const startSeconds = convertToSeconds(startHour, startMinute, startSecond);
         const endSeconds = convertToSeconds(endHour, endMinute, endSecond);
 
+        // validate end timestamp greater than start timestamp
+        if (endSeconds <= startSeconds) {
+            alert("End timestamp should be greater than start timestamp.");
+            return;
+        }
+
         // Create cue with caption text and add it to the track
         const cue = new VTTCue(startSeconds, endSeconds, caption);
         track.addCue(cue);
     }
+    video.src = videoUrl;
 }
 
 // add listner for add caption button
