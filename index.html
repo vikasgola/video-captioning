@@ -10,17 +10,23 @@
     <h1>Video Captioning</h1>
     <form id="captionForm">
         <label for="videoUrl">Video URL:</label>
-        <input type="text" id="videoUrl" name="videoUrl" required><br><br>
+        <input type="text" id="videoUrl" name="videoUrl" required>
 
-        <label for="startTimestamp">Start Timestamp:</label>
-        <input type="text" id="startTimestamp" name="startTimestamp" required><br><br>
+        <!-- contains all caption forms -->
+        <div id="captionsContainer">
+            <div>
+                <label for="startTimestamp1">Start Timestamp:</label>
+                <input type="text" id="startTimestamp1" name="startTimestamp1" required>
 
-        <label for="endTimestamp">End Timestamp:</label>
-        <input type="text" id="endTimestamp" name="endTimestamp" required><br><br>
+                <label for="endTimestamp1">End Timestamp:</label>
+                <input type="text" id="endTimestamp1" name="endTimestamp1" required>
 
-        <label for="caption">Caption:</label>
-        <textarea id="caption" name="caption" rows="4" required></textarea><br><br>
+                <label for="caption1">Caption:</label>
+                <textarea id="caption1" name="caption1" rows="4" required></textarea>
+            </div>
+        </div>
 
+        <button type="button" id="addCaptionButton">Add Caption</button>
         <input type="submit" value="Submit">
     </form>
 
