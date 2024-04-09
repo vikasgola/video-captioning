@@ -94,8 +94,8 @@ function loadVideoWithCaption(){
         }
     }else{
         // remove previous cues
-        for(var t of track.cues){
-            track.removeCue(t)
+        while(track.cues.length > 0){
+            track.removeCue(track.cues[0])
         }
     }
 
