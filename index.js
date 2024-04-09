@@ -3,6 +3,7 @@ var captionCount = 0;
 const captionForm = document.getElementById("captionForm");
 const addCaptionButton = document.getElementById("addCaptionButton");
 const captionsContainer = document.getElementById("captionsContainer");
+const clearButton = document.getElementById("clearButton");
 
 // add new caption form in caption container
 function addNewCaptionForm(){
@@ -131,6 +132,25 @@ function loadVideoWithCaption(){
     }
     video.src = videoUrl;
 }
+
+function clearForm(){
+    document.getElementById("captionForm").reset();
+
+    // Clear video player
+    const video = document.getElementById("videoPlayer");
+    video.src = "";
+    video.load();
+
+    // reset caption count
+    captionCount = 0;
+
+    // remove all accordion items
+    const captionsAccordion = document.getElementById("captionsAccordion");
+    captionsAccordion.innerHTML = "";
+}
+
+// add listner for clear button
+clearButton.addEventListener("click", clearForm);
 
 // add listner for add caption button
 addCaptionButton.addEventListener("click", addNewCaptionForm);
