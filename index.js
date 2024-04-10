@@ -4,6 +4,7 @@ const captionForm = document.getElementById("captionForm");
 const addCaptionButton = document.getElementById("addCaptionButton");
 const captionsContainer = document.getElementById("captionsContainer");
 const clearButton = document.getElementById("clearButton");
+const video = document.getElementById("videoPlayer");
 
 // add new caption form in caption container
 function addNewCaptionForm(){
@@ -84,7 +85,6 @@ function convertToSeconds(hour, minute, second) {
 function loadVideoWithCaption(){
     // set video url to video element
     const videoUrl = document.getElementById("videoUrl").value;
-    const video = document.getElementById("videoPlayer");
 
     var track = video.textTracks[0];
     if(!track){
@@ -149,14 +149,20 @@ function clearForm(){
     captionsAccordion.innerHTML = "";
 }
 
-// add listner for clear button
+// add listener for clear button
 clearButton.addEventListener("click", clearForm);
 
-// add listner for add caption button
+// add listener for add caption button
 addCaptionButton.addEventListener("click", addNewCaptionForm);
 
 // add listener for submiting form
 captionForm.addEventListener("submit", (event) => {
     event.preventDefault();
     loadVideoWithCaption();
+});
+
+// add listener for failed to load video
+video.addEventListener("error", () => {
+    alert("Failed to load video!");
+    console.error("Failed to load video!");
 });
